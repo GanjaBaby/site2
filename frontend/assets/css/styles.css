@@ -1,0 +1,92 @@
+body {
+    font-family: Workbench, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    transition: background-color 0.3s ease;
+}
+
+
+.navbar {
+    background-color: #ff3d00;
+    overflow: hidden;
+    color: white;
+    display: flex;
+    justify-content: space-between; /* Items will be aligned to the start and end */
+    align-items: center; /* Vertically center items */
+}
+
+.navbar {
+    background-color: #ff3d00;
+    overflow: hidden;
+    color: white;
+    display: flex;
+    justify-content: space-between; /* Items will be aligned to the start and end */
+    align-items: center; /* Vertically center items */
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 10px;
+    text-align: left;
+}
+
+.logo {
+    height: 40px; /* Adjust the height as needed */
+    width: auto; /* Let the width adjust automatically based on the height */
+    margin-right: 15px; /* Adjust the margin as needed */
+    padding: 5px;
+    border-radius: 25px;
+}
+
+.navbar a.logo {
+    margin-left: 20px; /* Adjust margin as needed */
+}
+
+.navbar .right-items {
+    margin-right: 20px; /* Adjust margin as needed */
+    margin: 0;
+    font-family: 'Protest Strike', sans-serif; /* Apply the Protest Strike font */
+}
+
+.main-banner {
+    background-color: #ff3d00;
+    color: white;
+    padding: 50px;
+    text-align: center;
+}
+
+.main-banner h1 {
+    font-family: 'Protest Strike', sans-serif; /* Apply the Protest Strike font */
+}
+
+.main-banner p {
+    font-family: 'Protest Strike', sans-serif; /* Apply the Protest Strike font */
+    font-size: 1.1em;
+}
+
+.content {
+    padding: 20px;
+    text-align: center;
+}
+
+.button {
+    background-color: white;
+    border: none;
+    color: #ff3d00;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    
+}
+
+.dark-mode {
+    background-color: #222;
+    color: #fff;
+}

@@ -1,0 +1,96 @@
+
+
+body {
+    font-family: Workbench, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.navbar {
+    background-color: #ff3d00;
+    overflow: hidden;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 10px;
+    text-align: left;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+    margin-right: 15px;
+    padding: 5px;
+    border-radius: 25px;
+}
+
+.navbar a.logo {
+    margin-left: 20px;
+}
+
+.navbar .right-items {
+    margin-right: 20px;
+    margin: 0;
+    font-family: 'Protest Strike', sans-serif;
+}
+
+.main-banner {
+    height: 50px;
+    width: 20px;
+    background-color: #ff3d00;
+    color: white;
+    padding: 3%;
+    text-align: center;
+}
+
+.main-banner h1 {
+    font-family: 'Protest Strike', sans-serif;
+}
+
+.main-banner p {
+    font-family: 'Protest Strike', sans-serif;
+    font-size: 1.1em;
+}
+
+.content {
+    width: 80%; 
+    height: 300px; 
+    resize: vertical; 
+    margin: 0 auto;
+    display: block;
+}
+
+.button {
+    background-color: rgb(157, 33, 33);
+    border: none;
+    color: #ff3d00;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.dark-mode {
+    background-color: #222;
+    color: #fff;
+}
+
+.content textarea {
+    width: 80%; 
+    height: 300px; 
+    resize: vertical; /* Allow vertical resizing */
+    margin: 0 auto; /* Center the textarea horizontally */
+    display: block;
+}
