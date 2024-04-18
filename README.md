@@ -57,6 +57,7 @@ Clone git repository
 Command to run project
 
 ```bash
+  cd site2
   docker-compose up --build
 ```
 
