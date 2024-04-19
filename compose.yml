@@ -14,7 +14,19 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
+    depends_on:
+      - mysql
   
+  mysql:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password  # Change this to your desired root password
+      MYSQL_DATABASE: mydatabase  # Change this to your desired database name
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
   nginx:
     build:
       context: ./nginx
@@ -24,3 +36,6 @@ services:
     depends_on:
       - frontend
       - backend
+
+volumes:
+  mysql_data:
