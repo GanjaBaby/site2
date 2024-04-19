@@ -1,8 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const mysql = require('mysql2');
 const fs = require('fs');
 const mysqldump = require('mysqldump');
+const jwt = require('jsonwebtoken');
+
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -99,6 +102,15 @@ app.get('/api/v1/backup-db', (req, res) => {
     });
 });
 
+
+app.post('/api/v1/login', (req, res) => {
+    // Authenticate User
+    const username = req.body.username
+    const user = {name: username}
+
+    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+    res.json({ accessToken: accessToken })
+})
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
