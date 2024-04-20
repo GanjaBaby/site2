@@ -8,9 +8,9 @@ document.getElementById("dark-mode-toggle").addEventListener("click", toggleDark
 
 
 function startReading() {
-    alert("Under Development");
+    window.location.href = "login.html";
 }
 
 function startWriting() {
-    alert("This too Under Development");
+    window.location.href = "home.html";
 }
