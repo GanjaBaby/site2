@@ -101,7 +101,7 @@ app.post('/api/v1/create-user', (req, res) => {
 
 
 // Endpoint to generate and download SQL dump
-app.get('/api/v1/backup-db', (req, res) => {
+app.get('/backup-db', (req, res) => {
     const dumpPath = path.join(__dirname, 'database', 'backup.sql');
     // Generate SQL dump
     mysqldump({
@@ -109,7 +109,7 @@ app.get('/api/v1/backup-db', (req, res) => {
             host: 'mysql',
             user: 'root',
             password: 'password',
-            database: 'mydatabase'
+            database: 'ganjababydb'
         },
         dumpToFile: dumpPath
     })
