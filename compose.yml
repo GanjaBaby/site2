@@ -1,14 +1,7 @@
 version: '3'
 
 services:
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-  
-  backend:
+  service:
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -23,7 +16,7 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: password  # Change this to your desired root password
-      MYSQL_DATABASE: mydatabase  # Change this to your desired database name
+      MYSQL_DATABASE: ganjababydb  # Change this to your desired database name
     volumes:
       - ./mysql_data:/var/lib/mysql
 
@@ -34,8 +27,7 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - frontend
-      - backend
+      - service
 
 volumes:
   mysql_data:

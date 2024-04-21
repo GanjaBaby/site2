@@ -17,38 +17,48 @@ app.set('views', path.join(__dirname, 'views'));
 const publicDirectory = path.join(__dirname, '/public');
 app.use(express.static(publicDirectory));
 
+//Parse URL-encoded bodies (as sent by HTML forms)
+app.use(express.urlencoded({ extended: false }));
+// Parse JSON request body
+app.use(express.json());
+
 //Connect MySQL
 const pool = mysql.createPool({
-    host: 'localhost',
+    host: 'mysql',
     user: 'root',
-    password: '',
-    database: 'expressdb',
+    password: 'password',
+    database: 'ganjababydb',
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
 });
 
-// Parse JSON request body
-app.use(express.json());
+// Function to create users table
+function createUsersTable() {
+    // Read the contents of user.sql file
+    fs.readFile('/database/user.sql', 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading user.sql:', err);
+            return;
+        }
+
+        // Execute the SQL commands to create the table
+        pool.query(data, (err, results) => {
+            if (err) {
+                console.error('Error creating users table:', err);
+                return;
+            }
+            console.log('Users table created successfully');
+        });
+    });
+}
+
+// Call the function to create users table when the application starts
+createUsersTable();
 
 
-app.get("/", (req, res) => {
-    //const isLoggedin = req.isAuthenticated();
-    res.render("index");
-});
-
-app.get("/register", (req, res) => {
-    res.render("register");
-});
-
-app.get("/login", (req, res) => {
-    res.render("login")
-})
-
-app.get('/api/v1/hello', (req, res) => {
-    //The request header includes a key called "user-agent" that contains information about the client software used to make the request.
-    res.send({ message: 'Hello World!' });
-});
+app.use('/', require('./routes/pages'));
+app.use('/auth', require('./routes/auth'));
 
 // Endpoint to create user table
 app.get('/user', (req, res) => {
