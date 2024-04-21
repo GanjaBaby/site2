@@ -10,12 +10,19 @@ const jwt = require('jsonwebtoken');
 const app = express();
 const port = process.env.PORT || 8000;
 
+//Set up ejs
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+const publicDirectory = path.join(__dirname, '/public');
+app.use(express.static(publicDirectory));
+
 //Connect MySQL
 const pool = mysql.createPool({
-    host: 'mysql',
+    host: 'localhost',
     user: 'root',
-    password: 'password',
-    database: 'mydatabase',
+    password: '',
+    database: 'expressdb',
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
@@ -24,8 +31,19 @@ const pool = mysql.createPool({
 // Parse JSON request body
 app.use(express.json());
 
-//Serve static files from the public  directory
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.get("/", (req, res) => {
+    //const isLoggedin = req.isAuthenticated();
+    res.render("index");
+});
+
+app.get("/register", (req, res) => {
+    res.render("register");
+});
+
+app.get("/login", (req, res) => {
+    res.render("login")
+})
 
 app.get('/api/v1/hello', (req, res) => {
     //The request header includes a key called "user-agent" that contains information about the client software used to make the request.
@@ -33,7 +51,7 @@ app.get('/api/v1/hello', (req, res) => {
 });
 
 // Endpoint to create user table
-app.get('/api/v1/user', (req, res) => {
+app.get('/user', (req, res) => {
   // Read the SQL file
   fs.readFile(path.join(__dirname, '/database/user.sql'), 'utf8', (err, data) => {
     if (err) {
